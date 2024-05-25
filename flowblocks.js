@@ -15,7 +15,7 @@ class flowblocks {
         { Opcode: 'FOR', PARAMS: ['VAR', 'START', 'END', 'CODE'], TEXT: 'FOR [VAR] FROM [START] TO [END] DO [CODE]', TYPE: 'conditional'},
         { Opcode: 'STOPALL', PARAMS: [], TEXT: 'STOP ALL', TYPE: 'command'},
         { Opcode: 'CLONE', PARAMS: [], TEXT: 'Create clone of myself', TYPE: 'command'},
-        { Opcode: 'CONDITIONALIFELSE', PARAMS: ['condition', 'code1', 'code2'], TEXT: 'IF [condition] then [code1] else [code2]', TYPE: 'conditional' }
+        { Opcode: 'IfElse', PARAMS: ['condition', 'code1', 'code2'], TEXT: 'IF [condition] then [code1] else [code2]', TYPE: 'conditional' }
       ],
       menus: []
     };
@@ -63,7 +63,7 @@ class flowblocks {
 
 
 
-CONDITIONALIFELSE(condition, code1, code2) {
+IfElse(condition, code1, code2) {
     if (condition && Array.isArray(code1)) {
         code1.forEach(([opcode, args]) => {
             vm.RunBlockByOpCode(opcode, args);
